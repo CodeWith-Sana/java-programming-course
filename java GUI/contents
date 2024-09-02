@@ -1,0 +1,166 @@
+---------GUI ----------
+A graphical user interface, or GUI, is a form of user interface that allows users to interact with the software.
+
+GUI Libraries :
+
+1) Java AWT(abstract window toolkit):
+ import java.awt.*;
+ Frame fr = new Frame();
+2) Java Swing: J prefix is used before     JFreme fr = new JFrame();
+import javax.swing.*
+
+some basic JUI components: we will study it in detail soon.
+
+Container: it is a subclass of component class in swing. it is used to group other components.
+----> Two types of container:
+1: Top Level container:   Top-level containers are the primary containers that is display on the screen.
+They serve as the main window or dialog for your application. Swing provides four main top-level containers:
+i)JFrame  ii)JDialog  iii)JApplet iv)Jwindow
+
+i)JFrame: : A JFrame is a top-level window with a title and a border, commonly used as the main window
+for applications.
+Common methods:
+-setTitle(String title): Sets the title of the frame.
+-setSize(int width, int height): Sets the size of the frame.
+-setDefaultCloseOperation(int operation): Defines the default operation when the close button is clicked
+ (e.g., JFrame.EXIT_ON_CLOSE).
+-setVisible(boolean visible): Makes the frame visible.
+-getContentPane(): Returns the content pane where components are added.
+-----write a simple program for creating JFrame
+
+
+ii) JDialog: A JDialog is a pop-up window that can be modal or non-modal, used to gather user input or
+display information.
+---- program for JDialog
+
+iii) JApplet:  A JApplet is a top-level container used for applets, which are Java programs
+ that can be embedded in a web page.it is used for web based java application. it is depricated  in modern java.
+
+
+iv) JWindow: A JWindow is a top-level window without a title bar or borders. It is often used for splash screens.
+---- write a program for JWindow container?
+
+Basic UI components:
+-JLable
+-JTextField
+-JButton
+-JCheckBox
+-JComboBox
+-JList
+-JPanel
+more details of UI components ---------> GUI part 1 sir slides.
+Adding Components: 3 ways...
+-->adding components Directly
+--- write a program for adding directly
+-->using getcontentpane:  contentPane is the top-level container where the main content will be placed.
+-write a program for adding components using getcontentpane
+--> using  Intermediate level container:
+-panel is a JPanel used as an intermediate container to group components.
+-write a program for adding components using Intermediate level container.
+
+2. Intermediate Level Container: these are used to group and organize components within the top-level container.
+They provide a way to structure and layout GU more effectively.
+ i) Jpanel    ii) JScrollPane  iii)JSplitPane   iv) JTabbedPane
+
+i)JPanel:
+A JPanel is a general-purpose container used to group components together.
+It can be nested within other containers and can have its own layout manager.
+
+
+
+
+Layout Managers:  Layout managers in Java Swing are responsible for determining the size
+and position of components within a container. They provide a way to arrange components automatically,
+ensuring that the user interface is both functional and visually appealing.
+1.FlowLayout: FlowLayout arranges components in a directional flow.
+Syntax : container.setLayout(new FlowLayout());
+         container.setLayout(new FlowLayout(FlowLayout.LEFT, 10, 20)); // with alignment and gaps
+
+2. BorderLayout:
+BorderLayout divides the container into five regions: NORTH, SOUTH, EAST, WEST, and CENTER.
+Each region can hold only one component, and the center region expands to fill any remaining space.
+syntax: container.setLayout(new BorderLayout());
+        container.add(component, BorderLayout.NORTH);
+3. GridLayout:
+GridLayout arranges components in a grid with equal-sized cells.
+Components are added left-to-right, top-to-bottom.
+Syntax:
+container.setLayout(new GridLayout(rows, cols)); or below
+container.setLayout(new GridLayout(rows, cols, hgap, vgap)); // with gaps
+
+4. BoxLayout: BoxLayout arranges components either vertically or horizontally in a single row or column.
+Syntax: container.setLayout(new BoxLayout(container, BoxLayout.X_AXIS)); or below one
+        container.setLayout(new BoxLayout(container, BoxLayout.Y_AXIS));
+
+5. GridBagLayout:
+GridBagLayout is a flexible layout manager that aligns components vertically and horizontally,
+ without requiring the components to be of the same size.
+ Syntax : container.setLayout(new GridBagLayout());
+          GridBagConstraints gbc = new GridBagConstraints();
+          container.add(component, gbc);
+
+6.CardLayout: CardLayout allows switching between different panels (cards),
+ where only one panel is visible at a time.
+ container.setLayout(new CardLayout());
+ CardLayout cardLayout = (CardLayout) container.getLayout();
+ cardLayout.show(container, "cardName");
+
+
+Dialog Boxes:
+Dialog boxes in Java are pop-up windows that prompt the user to enter information
+or provide some kind of response. They are often used to alert the user, gather input, or display messages.
+
+4 types:
+1)Message Dialog
+example:    JOptionPane.showMessageDialog(null, "This is a message dialog");
+
+2) Input Dialog:
+ JOptionPane.showInputDialog(null, "Enter your name:");
+
+3)Confirm Dialog:
+JOptionPane.showConfirmDialog(null, "Do you want to continue?");
+4)Costum Dialog
+
+Menus:
+A menu bar can be added to the top of a top-level container.
+---> Menu have three parts:
+ i) Menu Bar
+ ii) Menu
+ iii) Menu Item
+
+Even Handling in Java : ----> GUI responding or dynamic means that some actions are performed in it. So for that
+purpose Event Handling is used in Java.
+--> Java use Deligation Event Model to handle events in java.
+-->Deligation Event Model has three components:
+       i) Events: Change in the state of an Object is known as Event.
+       ii) Event Sources: These are objects that generate Events. e.g. Button, Selecting an item, pressing button,
+       iii) Event Listeners or Event Handler: These are interface that define method to handle specefic events.
+Library:   import java.awt.event.*;
+
+
+Event Listners:
+---> Each type of event has a corresponding event listener interface.....
+--->Java provides a wide range of event listeners to handle different types of events. Here is a list of the most commonly used event listeners in Java:
+
+    1. Action Event Listeners
+        ActionListener: Handles action events, such as button clicks.
+    2. Mouse Event Listeners
+        MouseListener: Handles mouse events like clicks, presses, releases, enters, and exits.
+        MouseMotionListener: Handles mouse motion events like mouse movements and drags.
+        MouseWheelListener: Handles mouse wheel events.
+    3.Key Event Listeners
+        KeyListener: Handles keyboard events such as key presses, releases, and typing.
+    4. Window Event Listeners
+        WindowListener: Handles window events like opening, closing, iconifying, deiconifying, activating, deactivating, gaining focus, and losing focus.
+        WindowFocusListener: Handles window focus events.
+        WindowStateListener: Handles window state change events.
+    4.Component Event Listeners
+        ComponentListener: Handles component events like resizing, moving, showing, and hiding.
+    5. Container Event Listeners
+        ContainerListener: Handles container events like adding and removing components from a container.
+    6. Focus Event Listeners
+        FocusListener: Handles focus events like gaining and losing focus.
+    7. Item Event Listeners
+        ItemListener: Handles item events like selecting and deselecting items.
+    8.Text Event Listeners
+        TextListener: Handles text events like text changes.
